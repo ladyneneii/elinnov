@@ -17,10 +17,13 @@ function App() {
   const isPrime = (num: number) => {
     if (num === 1) return setPrimeRes("neither prime or composite");
     if (num === 2 || num === 3 || num === 5) return setPrimeRes("prime");
+    // if number is even or divisible by 5
     if (num % 2 === 0 || num % 5 === 0) return setPrimeRes("composite");
 
+    // no point in checking for a factor higher than the square root of a number since there will always be at least one factor lower than the square root
     const limit = Math.sqrt(num);
 
+    // increment of 2 since odd numbers are not divisible by 2 anyway, and even numbers (divisible by 2) are automatically composite
     for (let divisor = 3; divisor <= limit; divisor += 2) {
       if (num % divisor === 0) return setPrimeRes("composite");
     }
@@ -30,9 +33,11 @@ function App() {
   // const findFactorial = (num: number) => {
   //   const factorialRecursive = (n: number): number => {
   //     if (n <= 1) return 1;
+  //     // if n is already in the factorialMemoization object, access its value (its factorial) to prevent further recursions
   //     if (n in factorialMemoization) return factorialMemoization[n];
 
   //     const result = n * factorialRecursive(n - 1);
+  //     // store n in the factorialMemoization object and its factorial if n is not in the object yet
   //     if (!(n in factorialMemoization)) factorialMemoization[n] = result;
 
   //     return result;
