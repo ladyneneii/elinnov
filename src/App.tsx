@@ -20,7 +20,7 @@ function App() {
     // if number is even or divisible by 5
     if (num % 2 === 0 || num % 5 === 0) return setPrimeRes("composite");
 
-    // no point in checking for a factor higher than the square root of a number since there will always be at least one factor lower than the square root
+    // no point in checking for a factor higher than the square root of a number since there will always be at least one factor lower than the square root (if num is composite). if divisor still cannot divide the number without any remainders and divisor has already reached the limit, that automatically means divisors higher than the limit has no way of dividing the number without any remainder. therefore, num is prime
     const limit = Math.sqrt(num);
 
     // increment of 2 since odd numbers are not divisible by 2 anyway, and even numbers (divisible by 2) are automatically composite
